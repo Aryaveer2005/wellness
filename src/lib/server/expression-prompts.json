@@ -1,0 +1,65 @@
+{
+  "_note": "Server-only. Prompt = prefix + expression + suffix. Realistic close-up photography, cropped from eyebrows to chin so the hairline is out of frame. \"seeds\" are verified by eye (realistic, natural, correct expression, hairline out of frame, no distortions). FLUX.2 klein is deterministic for the same prompt + seed + size + steps — if you change ANY prompt text, re-verify the seeds (docs/AI_CHATBOT.md §3).",
+  "prefix": "Photorealistic close-up photograph of an adult Indian man’s face, framed from the middle of the forehead down to just below the chin — the top of the head and hairline are cut off by the top edge of the frame, while the whole mouth and chin are clearly visible — looking at the camera. Expression: ",
+  "suffix": ". Natural skin texture, soft warm window light, gentle shallow depth of field, plain warm beige background, authentic candid editorial photography, 85mm lens, true-to-life colours, no text, no watermark.",
+  "steps": 4,
+  "situations": {
+    "date": {
+      "expression": "a warm, genuine smile that reaches the eyes, relaxed eyebrows, soft friendly eyes with gentle smile lines",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    "interview": {
+      "expression": "calm and attentive, a small confident closed-mouth smile, steady eyes, level relaxed eyebrows",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    "meeting": {
+      "expression": "calm and engaged, attentive eyes, smooth relaxed brow, a faint easy smile",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    "social": {
+      "expression": "easy and friendly, a relaxed open natural smile, bright soft eyes",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    "presentation": {
+      "expression": "grounded and assured, direct calm eyes, a small composed smile, relaxed brow",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    },
+    "boost": {
+      "expression": "quietly confident and content, calm steady eyes, a small private smile, relaxed face",
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ]
+    }
+  },
+  "width": 1184,
+  "height": 880,
+  "_verified": "2026-10-21 — all seeds checked by eye: photorealistic, natural skin, correct expression, whole mouth + chin visible, head top mostly out of frame (the app also crops the top 16% when displaying)."
+}

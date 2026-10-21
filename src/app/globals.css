@@ -1,0 +1,370 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==================================================================
+   EaseMind — "Warm Editorial" design system (docs/DESIGN.md)
+   Serif headlines · grotesk body · real photography · peach / periwinkle
+   / blush bands · ink pill buttons · ember accent. Red = crisis ONLY.
+   ================================================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-serif), Georgia, serif;
+  --font-script: var(--font-script), "Segoe Script", cursive;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  /* brand colours */
+  --color-ink: var(--ink);
+  --color-peach: var(--peach);
+  --color-peach-deep: var(--peach-deep);
+  --color-periwinkle: var(--periwinkle);
+  --color-blush: var(--blush);
+  --color-ember: var(--ember);
+  --color-slate: var(--slate);
+  /* legacy names (kept so older markup still works) */
+  --color-amber: var(--amber);
+  --color-amber-foreground: var(--amber-foreground);
+  --color-teal-soft: var(--teal-soft);
+  --color-crisis: var(--crisis);
+  --color-crisis-foreground: var(--crisis-foreground);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-glass: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+:root {
+  --background: #FFFCFA;
+  --foreground: #161514;
+  --card: #FFFFFF;
+  --card-foreground: #161514;
+  --popover: #FFFFFF;
+  --popover-foreground: #161514;
+
+  --ink: #161514;
+  --peach: #FFC6A5;
+  --peach-deep: #FF9468;
+  --periwinkle: #E8EEFB;
+  --blush: #F7F0EE;
+  --ember: #E8673E;
+  --slate: #33464F;
+
+  /* Primary = ink (black pill buttons, like the reference) */
+  --primary: #161514;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8EEFB;
+  --secondary-foreground: #1F2A44;
+  --muted: #F7F0EE;
+  --muted-foreground: #5E5853;
+  --accent: #FFE9DD;
+  --accent-foreground: #4A2414;
+
+  /* "amber" = ember accent for confidence moments */
+  --amber: #E8673E;
+  --amber-foreground: #FFFFFF;
+  --teal-soft: #E8EEFB;
+
+  --destructive: #8A2A20;
+  --crisis: #B3261E;
+  --crisis-foreground: #FFFFFF;
+  --border: rgba(22, 21, 20, 0.10);
+  --input: rgba(22, 21, 20, 0.14);
+  --ring: #E8673E;
+  --chart-1: #E8673E;
+  --chart-2: #3862EC;
+  --chart-3: #33464F;
+  --chart-4: #FF9468;
+  --chart-5: #9AA6C9;
+  --radius: 1rem;
+
+  /* Card surface tokens (the old "glass" names now render as editorial cards) */
+  --glass-fill: #FFFFFF;
+  --glass-fill-hover: #FFFFFF;
+  --glass-fill-strong: #FFFFFF;
+  --glass-stroke: rgba(22, 21, 20, 0.08);
+  --glass-stroke-soft: rgba(22, 21, 20, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 1);
+  --glass-shade: rgba(22, 21, 20, 0.04);
+  --glass-shadow: 0 1px 2px rgba(22, 21, 20, 0.04), 0 12px 32px -18px rgba(22, 21, 20, 0.18);
+  --glass-shadow-hover: 0 2px 4px rgba(22, 21, 20, 0.05), 0 22px 44px -20px rgba(22, 21, 20, 0.26);
+  --glass-blur: 14px;
+  --sheen: rgba(255, 198, 165, 0.25);
+
+  --soft-light: rgba(255, 255, 255, 0.9);
+  --soft-dark: rgba(22, 21, 20, 0.08);
+
+  --hero-gradient: linear-gradient(160deg, #FFD9C2 0%, #FFB58E 45%, #FF8F63 100%);
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #161514;
+  --sidebar-primary: #161514;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F7F0EE;
+  --sidebar-accent-foreground: #161514;
+  --sidebar-border: rgba(22, 21, 20, 0.10);
+  --sidebar-ring: #E8673E;
+}
+
+.dark {
+  --background: #121110;
+  --foreground: #F5EFEA;
+  --card: #1B1918;
+  --card-foreground: #F5EFEA;
+  --popover: #1B1918;
+  --popover-foreground: #F5EFEA;
+
+  --ink: #F5EFEA;
+  --peach: #5A3324;
+  --peach-deep: #8C4A30;
+  --periwinkle: #1B2133;
+  --blush: #1F1B1A;
+  --ember: #FF8F63;
+  --slate: #B9C6CD;
+
+  /* Primary = warm cream pill on dark */
+  --primary: #F5EFEA;
+  --primary-foreground: #161514;
+  --secondary: #1B2133;
+  --secondary-foreground: #D5DDF5;
+  --muted: #1F1B1A;
+  --muted-foreground: #ADA49D;
+  --accent: #2B201B;
+  --accent-foreground: #FFD9C2;
+
+  --amber: #FF8F63;
+  --amber-foreground: #1A0E08;
+  --teal-soft: #1B2133;
+
+  --destructive: #F2A097;
+  --crisis: #E5484D;
+  --crisis-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: #FF8F63;
+  --chart-1: #FF8F63;
+  --chart-2: #7E9CF5;
+  --chart-3: #B9C6CD;
+  --chart-4: #FFC6A5;
+  --chart-5: #6B7698;
+
+  --glass-fill: #1B1918;
+  --glass-fill-hover: #211E1D;
+  --glass-fill-strong: #1B1918;
+  --glass-stroke: rgba(255, 255, 255, 0.08);
+  --glass-stroke-soft: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.04);
+  --glass-shade: rgba(0, 0, 0, 0.3);
+  --glass-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 36px -18px rgba(0, 0, 0, 0.7);
+  --glass-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.45), 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+  --sheen: rgba(255, 143, 99, 0.12);
+
+  --soft-light: rgba(255, 255, 255, 0.04);
+  --soft-dark: rgba(0, 0, 0, 0.5);
+
+  --hero-gradient: linear-gradient(160deg, #2A1A13 0%, #4A2A1D 50%, #6B3A26 100%);
+
+  --sidebar: #1B1918;
+  --sidebar-foreground: #F5EFEA;
+  --sidebar-primary: #F5EFEA;
+  --sidebar-primary-foreground: #161514;
+  --sidebar-accent: #1F1B1A;
+  --sidebar-accent-foreground: #F5EFEA;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
+  --sidebar-ring: #FF8F63;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    letter-spacing: -0.003em;
+    overflow-x: clip;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* Editorial serif headlines. Instrument Serif has one weight — never fake-bold it. */
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: color-mix(in oklab, var(--ember) 28%, transparent); }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+@layer components {
+  /* ---- Cards ------------------------------------------------------------
+     The old "liquid-glass" class names are kept for compatibility but now
+     render as clean editorial cards: solid surface, hairline border, soft
+     shadow. Hover lifts gently and warms the border. Children no longer
+     need z-index tricks (the ::after glow sits underneath content).
+  ------------------------------------------------------------------------ */
+  .liquid-glass {
+    position: relative;
+    isolation: isolate;
+    background: var(--glass-fill);
+    border: 1px solid var(--glass-stroke-soft);
+    box-shadow: var(--glass-shadow);
+    transition:
+      box-shadow 0.5s var(--ease-calm),
+      transform 0.5s var(--ease-calm),
+      border-color 0.5s var(--ease-calm),
+      background-color 0.5s var(--ease-calm);
+  }
+  .liquid-glass::before { content: none; }
+  .liquid-glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--sheen), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-calm);
+    pointer-events: none;
+  }
+  .liquid-glass-hover:hover,
+  .liquid-glass-hover:focus-visible {
+    box-shadow: var(--glass-shadow-hover);
+    border-color: color-mix(in oklab, var(--ember) 35%, var(--glass-stroke-soft));
+    transform: translateY(-2px);
+  }
+  .liquid-glass-hover:hover::after,
+  .liquid-glass-hover:focus-visible::after { opacity: 1; }
+  .liquid-glass-strong { background: var(--glass-fill-strong); }
+
+  /* Header/dock: the only translucent surfaces left */
+  .glass-bar {
+    background: color-mix(in oklab, var(--background) 82%, transparent);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: 1px solid var(--glass-stroke-soft);
+  }
+
+  /* ---- Controls ---- */
+  .soft-raised {
+    background: var(--card);
+    border: 1px solid var(--glass-stroke-soft);
+    box-shadow: 0 1px 2px var(--soft-dark);
+  }
+  .soft-inset {
+    background: var(--muted);
+    border: 1px solid var(--glass-stroke-soft);
+  }
+
+  /* ---- Bands (full-width coloured sections, as in the reference) ---- */
+  .band-peach { background: var(--hero-gradient); color: var(--ink); }
+  .dark .band-peach { color: var(--foreground); }
+  .band-periwinkle { background: var(--periwinkle); }
+  .band-blush { background: var(--blush); }
+  .band-ink { background: #121110; color: #F5EFEA; }
+
+  /* Retired visual effects — kept as no-ops so old markup doesn't break */
+  .aurora { display: none; }
+}
+
+@keyframes aurora-morph { from { opacity: 1; } to { opacity: 1; } }
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  .font-script { font-family: var(--font-script); font-weight: 600; letter-spacing: 0; }
+  /* Accent words: ember ink (the reference uses a single warm accent, not rainbow gradients) */
+  .text-gradient-calm { color: var(--ember); }
+  .text-gradient-calm * { color: inherit; }
+  .glass {
+    background: color-mix(in oklab, var(--background) 82%, transparent);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  }
+  .shadow-soft { box-shadow: var(--glass-shadow); }
+  .text-balance { text-wrap: balance; }
+  .perspective-1200 { perspective: 1200px; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  /* Hand-drawn underline for the one script accent word */
+  .scribble-underline {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 C 40 2, 80 11, 120 6 S 180 4, 198 7' fill='none' stroke='%23161514' stroke-width='2.2' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 0.35em;
+    background-position: 0 100%;
+    padding-bottom: 0.2em;
+  }
+  .dark .scribble-underline {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 8 C 40 2, 80 11, 120 6 S 180 4, 198 7' fill='none' stroke='%23F5EFEA' stroke-width='2.2' stroke-linecap='round'/></svg>");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
