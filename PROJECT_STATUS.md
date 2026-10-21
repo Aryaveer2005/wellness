@@ -51,6 +51,8 @@ Legend: ✅ done · 🟡 in progress / partial · ⬜ not started · 🔒 needs 
 
 ## 3. Known issues / needs owner
 
+- 🔒 Vercel: after adding/changing env vars, **Redeploy** (they only apply to new deployments). Check https://wellness-two-liard.vercel.app/api/health — every value except `anthropicFallback` should be `true`.
+
 - ⚠️ The final QA agent was stopped part-way by a usage limit (2026-10-21). Type check, lint and all page loads pass, but these items from the docs review may still be open — re-run the QA pass to confirm: (1) Reframer crisis path should show the red crisis card + tap-to-call (today the crisis text appears in the hint box); (2) small expression card during the session should show a visible "AI-generated photo" label; (3) settings download filename still `show-up-data-…`; (4) "Delete my data" leaves sound/voice-guide preferences; (5) voice-mode overlay not visually re-checked after the redesign.
 
 - ⚠️ Don't run `npm run build` while `npm run dev` is running (they share `.next`). If dev fails with `EINVAL: invalid argument, readlink ... .next` (OneDrive quirk), stop it, delete the `.next` folder, and start again.
@@ -72,6 +74,7 @@ Legend: ✅ done · 🟡 in progress / partial · ⬜ not started · 🔒 needs 
 
 | Date | Who | What changed |
 |---|---|---|
+| 2026-10-21 | Claude Code (CEO) | Live site (wellness-two-liard.vercel.app) answered "offline" on every AI route in ~0.3 s → server could not see the API keys. Added `GET /api/health` (+ `?deep=1` live key test) showing which keys the server sees (true/false only). Owner: set keys for Production on Vercel and redeploy. |
 | 2026-10-21 | Claude Code (CEO) | Rebrand to EaseMind; v3 "Warm Editorial" redesign (rockethealth.app as design reference only) by 4 designer agents; real Pexels photography (10 slots, credited); realistic AI expression photos (verified seeds, brows-to-chin crop, labelled); docs FEATURES/TECH_STACK/SAFETY/BUILD_PLAN written; key redaction now covers Google keys. Type check + lint clean, all routes 200. Initial commit pushed to github.com/Aryaveer2005/wellness. |
 | 2026-10-21 | Claude Code (Designer — app shell & core tools) | Warm Editorial restyle of the app shell (full-width clean top bar with new EaseMind wordmark, sliding black pill for the current page, flat red "Need help now?", white phone dock with ember active tab, ink footer band with disclaimer + "Get help now" button; aurora removed) and of /home (peach greeting band with home.jpg photo card, serif check-in, bento tools, periwinkle activity band), /start (peach band), /confidence (ember choices, editorial expression card — crop + AI label unchanged, peach orb; water video kept), /reframe + history, /progress (cloud video removed, periwinkle stat band). No behaviour, data or safety-copy changes. |
 | 2026-10-21 | Claude Code (Designer — chat/pros/help/account/UI kit) | Warm Editorial restyle of /chat (ink user bubbles, white companion bubbles, peach voice-mode circle), /psychologists (periwinkle hero search band, big serif rank numerals, ember stars, initials-in-circle profile cards), /help (calm crisis page, pill tap-to-call), /settings (iOS-style white groups, neutral delete), login/about (photo in blush frame)/privacy/terms, and the UI kit (flat black pill buttons, outline pills, blush pill inputs, ember switches/sliders). No behaviour, API, safety copy or storage changes. |
